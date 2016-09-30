@@ -1,7 +1,8 @@
+const generateLink = require('../createURL');
 module.exports = (express) => {
-  var router = express.Router();
-
-  router.post('/v1/url', (req, res) => {
-    
+  const router = express.Router();
+  router.post('/url', (req, res) => {
+    res.json(generateLink.shortURL(req.body.link));
   });
+  return router;
 };
