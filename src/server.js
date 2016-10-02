@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // creating my route
-app.use('/api/v1/url', require('./routes/api/recipes')(express));
+app.use('/api/v1/', require('./routes/api/recipes')(express));
 
 const server = app.listen(port, () => {
   console.log('Server active on', port);

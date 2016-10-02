@@ -17,31 +17,32 @@ module.exports = (express) => {
 
 
 // Find one recipe
-router.post('/url', (req, res) => {
-  recipes.add(req.body, (err) => {
-    res.status(500).json(err);
-  }, (data) => {
-    res.status(200).json(data);
+  router.get('/url/:id', (req, res) => {
+    req.body.id = req.params.id;
+    recipes.one(req.body, (err) => {
+      res.status(500).json(err);
+    }, (data) => {
+      res.status(200).json(data);
+    });
   });
-});
 
 // ___________________________________________________________
 
 
 // Find All recipes
-router.post('/url', (req, res) => {
-  recipes.add(req.body, (err) => {
-    res.status(500).json(err);
-  }, (data) => {
-    res.status(200).json(data);
+  router.get('/urls', (req, res) => {
+    recipes.all((err) => {
+      res.status(500).json(err);
+    }, (data) => {
+      res.status(200).json(data);
+    });
   });
-});
 
 // ___________________________________________________________
 
 
 // Delete recipes
-router.post('/url', (req, res) => {
+router.post('/url/:id', (req, res) => {
   recipes.add(req.body, (err) => {
     res.status(500).json(err);
   }, (data) => {
@@ -52,26 +53,13 @@ router.post('/url', (req, res) => {
 // ___________________________________________________________
 
 // Update recipes
-router.post('/url', (req, res) => {
+router.post('/url/:id', (req, res) => {
   recipes.add(req.body, (err) => {
     res.status(500).json(err);
   }, (data) => {
     res.status(200).json(data);
   });
 });
-
-// ___________________________________________________________
-
-// Create recipes
-router.post('/url', (req, res) => {
-  recipes.add(req.body, (err) => {
-    res.status(500).json(err);
-  }, (data) => {
-    res.status(200).json(data);
-  });
-});
-
-// ___________________________________________________________
 
   return router;
 };
