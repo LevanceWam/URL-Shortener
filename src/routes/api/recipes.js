@@ -42,24 +42,27 @@ module.exports = (express) => {
 
 
 // Delete recipes
-router.post('/url/:id', (req, res) => {
-  recipes.add(req.body, (err) => {
-    res.status(500).json(err);
-  }, (data) => {
-    res.status(200).json(data);
+  router.delete('/url/:id', (req, res) => {
+  req.body.id = req.params.id;
+    recipes.remove(req.body, (err) => {
+      res.status(500).json(err);
+    }, (data) => {
+      res.status(200).json(data);
+    });
   });
-});
 
 // ___________________________________________________________
 
 // Update recipes
-router.post('/url/:id', (req, res) => {
-  recipes.add(req.body, (err) => {
-    res.status(500).json(err);
-  }, (data) => {
-    res.status(200).json(data);
+  router.post('/url/:id', (req, res) => {
+  req.body.id = req.params.id;
+    recipes.update(req.body, (err) => {
+      res.status(500).json(err);
+    }, (data) => {
+      res.status(200).json(data);
+    });
   });
-});
+
 
   return router;
 };
