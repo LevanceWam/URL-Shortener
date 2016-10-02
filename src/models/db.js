@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
-require('dotenv').config();
+
+if (!process.env.DB_HOST) {
+  require('dotenv').config({ silent: true });
+}
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: process.env.DB_SCHEMA,
@@ -14,7 +17,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 
 // This is what creates my table for recipes and all of the properties
 // Double check your datatypes
-const recipes = sequelize.define('url', {
+const recipe = sequelize.define('recipe', {
   name: {
     type: Sequelize.STRING,
   },
@@ -32,4 +35,4 @@ const recipes = sequelize.define('url', {
 sequelize.sync();
 
 exports.sequelize = sequelize;
-exports.recipes = recipes;
+exports.recipes = recipe;
