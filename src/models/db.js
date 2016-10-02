@@ -11,3 +11,23 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   },
   logging: false,
 });
+
+const recipes = sequelize.define('url', {
+  name: {
+    type: Sequelize.STRING,
+  },
+  originalLink: {
+    type: Sequelize.STRING,
+  },
+  newLink: {
+    type: Sequelize.STRING,
+  },
+  genre: {
+    type: Sequelize.STRING,
+  },
+});
+
+sequelize.sync();
+
+exports.sequelize = sequelize;
+exports.recipes = recipes;
