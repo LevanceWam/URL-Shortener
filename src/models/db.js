@@ -35,4 +35,4 @@ const recipe = sequelize.define('recipe', {
 sequelize.sync();
 
 exports.sequelize = sequelize;
-exports.recipes = recipe;
+exports.recipe = recipe;
