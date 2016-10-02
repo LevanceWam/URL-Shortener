@@ -1,8 +1,6 @@
 const Sequelize = require('sequelize');
 
-if (!process.env.DB_HOST) {
-  require('dotenv').config({ silent: true });
-}
+require('dotenv').config();
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: process.env.DB_SCHEMA,
@@ -10,19 +8,18 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   pool: {
     max: 5,
     min: 0,
-    idle: 10000,
+    idle: 120000,
   },
   logging: false,
 });
 
-// This is what creates my table for recipes and all of the properties
-// Double check your datatypes
+
 const recipe = sequelize.define('recipe', {
   name: {
     type: Sequelize.STRING,
   },
   originalLink: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
   },
   newLink: {
     type: Sequelize.STRING,
