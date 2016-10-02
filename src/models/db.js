@@ -12,6 +12,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   logging: false,
 });
 
+// This is what creates my table for recipes and all of the properties
+// Double check your datatypes
 const recipes = sequelize.define('url', {
   name: {
     type: Sequelize.STRING,
