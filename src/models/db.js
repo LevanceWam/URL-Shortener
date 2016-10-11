@@ -19,7 +19,7 @@ const recipe = sequelize.define('recipe', {
     type: Sequelize.STRING,
   },
   originalLink: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
   },
   newLink: {
     type: Sequelize.STRING,
