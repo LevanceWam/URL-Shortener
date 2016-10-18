@@ -49,10 +49,10 @@ exports.one = (data, err, success) => {
   console.log('This one recipe was found from the models');
 };
 
-// redirect the url
-exports.go = (data, err, success) => {
-  db.recipe.
-};
+// // redirect the url
+// exports.go = (data, err, success) => {
+//   db.recipe.
+// };
 
 // ___________________________________________________________
 

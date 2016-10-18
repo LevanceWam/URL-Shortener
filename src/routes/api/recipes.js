@@ -1,11 +1,12 @@
 const recipes = require('../../models/recipes');
-
+const sURL = require('../../models/createURL');
 
 module.exports = (express) => {
   const router = express.Router();
 
   // Create recipes
   router.post('/url', (req, res) => {
+    // req.body.shortURL = recipes.originalLink(sURL);
     recipes.add(req.body, (err) => {
       res.status(500).json(err);
     }, (data) => {
